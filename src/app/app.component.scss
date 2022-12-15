@@ -1,3 +1,61 @@
-h1 {
-  color: rgb(112, 222, 195);
+.landing-page {
+  $img-size: 200px;
+
+  background-color: black;
+  color: white;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+
+  .content {
+    max-width: 1000px;
+
+    display: grid;
+    grid-template-areas: "img name";
+    grid-template-columns: calc(1.1 * #{$img-size}) auto;
+    grid-template-rows: calc(1.1 * #{$img-size}) auto;
+    gap: 10px;
+
+    align-content: center;
+
+    h1 {
+      margin: 0;
+      grid-area: name;
+      display:flex;
+      align-items: center;
+
+      font-size: 6rem;
+    }
+
+    picture {
+      $stroke-size: 1px;
+      $stroke-size--negative: calc(-1 * #{$stroke-size});
+
+      grid-area: img;
+
+      filter: drop-shadow($stroke-size 0px 0px rgb(123, 123, 123))
+        drop-shadow($stroke-size--negative 0px 0px rgb(123, 123, 123))
+        drop-shadow(0px $stroke-size 0px rgb(123, 123, 123))
+        drop-shadow(0px $stroke-size--negative 0px rgb(123, 123, 123))
+        drop-shadow($stroke-size $stroke-size 0px rgb(123, 123, 123))
+        drop-shadow(
+          $stroke-size--negative $stroke-size--negative 0px rgb(123, 123, 123)
+        )
+        drop-shadow($stroke-size--negative $stroke-size 0px rgb(123, 123, 123))
+        drop-shadow($stroke-size $stroke-size--negative 0px rgb(123, 123, 123));
+      img {
+        width: $img-size;
+        clip-path: polygon(
+          99.69% 55.6%,
+          76.6% 92.34%,
+          33.49% 97.19%,
+          2.81% 66.51%,
+          7.66% 23.4%,
+          44.4% 0.31%,
+          85.36% 14.64%
+        );
+      }
+    }
+  }
 }
