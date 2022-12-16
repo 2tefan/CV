@@ -12,38 +12,55 @@
     max-width: 1000px;
 
     display: grid;
-    grid-template-areas: "img name";
+    grid-template-areas: "img text";
     grid-template-columns: calc(1.1 * #{$img-size}) auto;
     grid-template-rows: calc(1.1 * #{$img-size}) auto;
     gap: 10px;
 
     align-content: center;
 
-    h1 {
-      margin: 0;
-      grid-area: name;
-      display:flex;
+    .text {
+      grid-area: text;
+      display: inline-grid;
+      grid-template-areas: "name"
+      "details";
+
+      align-content: center;
       align-items: center;
 
-      font-size: 6rem;
-    }
+      h1,
+      h2 {
+        margin: 0;
+      }
 
+      h1 {
+        font-size: 6rem;
+        grid-area: name;
+        margin-top: -30px;
+        margin-bottom: -27px;
+      }
+
+      h2 {
+        grid-area: details;
+      }
+    }
     picture {
       $stroke-size: 1px;
       $stroke-size--negative: calc(-1 * #{$stroke-size});
+      $stroke-color: rgb(0, 140, 255);
 
       grid-area: img;
 
-      filter: drop-shadow($stroke-size 0px 0px rgb(123, 123, 123))
-        drop-shadow($stroke-size--negative 0px 0px rgb(123, 123, 123))
-        drop-shadow(0px $stroke-size 0px rgb(123, 123, 123))
-        drop-shadow(0px $stroke-size--negative 0px rgb(123, 123, 123))
-        drop-shadow($stroke-size $stroke-size 0px rgb(123, 123, 123))
+      filter: drop-shadow($stroke-size 0px 0px $stroke-color)
+        drop-shadow($stroke-size--negative 0px 0px $stroke-color)
+        drop-shadow(0px $stroke-size 0px $stroke-color)
+        drop-shadow(0px $stroke-size--negative 0px $stroke-color)
+        drop-shadow($stroke-size $stroke-size 0px $stroke-color)
         drop-shadow(
-          $stroke-size--negative $stroke-size--negative 0px rgb(123, 123, 123)
+          $stroke-size--negative $stroke-size--negative 0px $stroke-color
         )
-        drop-shadow($stroke-size--negative $stroke-size 0px rgb(123, 123, 123))
-        drop-shadow($stroke-size $stroke-size--negative 0px rgb(123, 123, 123));
+        drop-shadow($stroke-size--negative $stroke-size 0px $stroke-color)
+        drop-shadow($stroke-size $stroke-size--negative 0px $stroke-color);
       img {
         width: $img-size;
         clip-path: polygon(
